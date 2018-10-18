@@ -1,0 +1,13 @@
+<h1>signup</h1>
+<div class="signup">
+  <%= form_tag("/users/create") do %>
+    <h2>name</h2>
+      <textarea name="name"></textarea>
+    <h2>email</h2>
+      <textarea name="email"></textarea>
+    <h2>password</h2>
+      <textarea name="password"></textarea>
+    <br>
+    <input type="submit" value="signup">
+  <% end %>
+</div>

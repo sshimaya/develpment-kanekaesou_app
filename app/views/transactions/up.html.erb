@@ -1,0 +1,29 @@
+<!-- nakuteii -->
+
+
+<h1>transaction registered!</h1>
+
+<h2></h2>
+<%= @transaction.debtor_name %>
+<h2></h2>
+<%= @transaction.goods %>
+<h2></h2>
+<%= @transaction.registration_date %>
+<h2></h2>
+remind_date
+
+<%= link_to("back to mypage","/users/#{@user.id}") %>
+
+<!-- #
+<%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do %> -->
+      <!-- <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+          <span class="fa fa-heart like-btn-unlike"></span>
+        <% end %>
+      <% else %>
+        <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do %>
+          <span class="fa fa-heart like-btn"></span>
+        <% end %>
+      <% end %>
+      <%= @likes_count %>
+      <% if @post.user_id == @current_user.id %>
+        <div class="post-menus"> -->

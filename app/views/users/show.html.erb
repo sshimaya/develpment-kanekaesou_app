@@ -1,0 +1,71 @@
+<div class="jumbotron text-center">
+<h1>KanekaesouApp_mypage</h1>
+<%= @user.name %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>Transaction_registration</h2>
+          <%= form_tag("/transactions/search") do %>
+          <input type="hidden" name="id" value="<%= @user.id%>">
+            <div class="form-group">
+              <label for="email">Debtors_name:</label>
+              <input name="nickname" type="text" class="form-control" placeholder="Enter name in ひらがな">
+            </div>
+              <input type="submit" class: "btn" value="Search">
+          <% end %>
+          <%= form_tag("/transactions/create") do %>
+          <!-- <input type="hidden" name="id" value="<%= @user.id%>"> -->
+          <!-- <input type="hidden" name="id" value="<%= @user.id%>"> -->
+          <input type="hidden" name="id" value="<%= @user.id%>">
+            <div class="form-group">
+              <select name="debtor_name"  class="form-control">
+                <% @names.each do |name| %>
+                  <option><%= name %></option>
+                <% end %>
+                <!-- <option>a</option>
+                <option>i</option> -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="email">Transaction_object:</label>
+              <input type="text" class="form-control" placeholder="Enter Transaction_object" name="goods">
+            </div>
+            <div class="form-group">
+              <label for="email">Transaction_date:</label>
+              <input type="date" class="form-control" name="registration_date">
+            </div>
+            <input type="submit" value="register">
+          <% end %>
+    </div>
+
+    <div class="col-sm-8">
+        <h2>Transactions</h2>
+          <table class="table table-striped">
+	           <thead>
+               <tr>
+                 <th>to</th>
+                 <th>object</th>
+                 <th>date</th>
+                 <th>status</th>
+                 <th>remind</th>
+                 <th>paid back</th>
+               </tr>
+             </thead>
+             <% @transactions.each do |transaction| %>
+	            <tbody>
+                <tr>
+                  <td><%= transaction.debtor_name %></td>
+                  <td><%= transaction.goods %></td>
+                  <td><%= transaction.registration_date %></td>
+                  <td><%= transaction.status %></td>
+                  <td><%= link_to("Remind", "/transactions/#{transaction.id}/remind", class: 'btn btn-warning') %></td>
+                  <td><%= link_to("Done", "/transactions/#{transaction.id}/destroy", class: 'btn btn-success', :method => :post) %></td>
+                </tr>
+              </tbody>
+              <% end %>
+            </table>
+     </div>
+   </div>
+ </div>
